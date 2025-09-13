@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    title Napp Home
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    style.
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: #f8f9fa;
+        color: #222;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5em;
+        text-align: center;
+      }
+      p {
+        font-size: 1.1rem;
+        text-align: center;
+        margin: 0 1em;
+      }
+  body
+    h1 Welcome to Napp
+    p This is the home page of your Napp application.
+    form(action="/upload" method="post" enctype="multipart/form-data" style="margin-top:2em;")
+      label(for="file") Upload .exe or .apk file:
+      input(type="file" name="file" id="file" accept=".exe,.apk" required)
+      button(type="submit") Upload
+    if error
+      p(style="color:red;")= error
+    if message
+      p(style="color:green;")= message
+    hr
+    h2 Download a file
+    form(action="/download" method="get")
+      label(for="filename") Filename:
+      input(type="text" name="filename" id="filename" placeholder="example.exe" required)
+      button(type="submit") Download
